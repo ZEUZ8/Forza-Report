@@ -1,11 +1,12 @@
 import React from "react";
 import Cards from "./Cards";
-import Doughnut from "./Doughnut";
+import DoughnutChart from "./DoughnutChart";
 import AreaChart from "./AreaChart";
+import Footer from "./Footer";
 
 const DashBoard = () => {
   return (
-    <div className="grid max-w-[100%] xl:grid-cols-2 gap-4 ">
+    <div className="grid  xl:grid-cols-2 gap-4 ">
       <div className="grid gap-4">
         <div className="grid md:grid-cols-2 xl:grid-cols-3  gap-4">
           <div className="grid gap-4 max-w-[100%]">
@@ -28,32 +29,36 @@ const DashBoard = () => {
                 <p>08</p>
               </div>
             </div>
-            <div className="row-span-2 grid grid-row-2  justify-center shadow-special rounded-lg max-lg:col-span-4">
-              <div className="p-5 grid gap-1">
+            <div className="row-span-2 grid grid-row-2   shadow-special rounded-lg max-lg:col-span-4">
+              <div className="p-5 grid gap-2">
                 <div className="text-sm font-medium">Sales Return</div>
-                <p className="text-lg text-[#F7A500] font-normal "> 30000.000 <span className="text-sm font-medium">AED</span></p>
+                <p className="text-lg text-[#F7A500] font-normal ">
+                  {" "}
+                  30000.000{" "}
+                  <span className="text-sm font-medium text-black">AED</span>
+                </p>
               </div>
-              <div className="p-5 grid gap-1">
+              <div className="p-5 grid gap-2">
                 <div className="text-sm font-medium">Purchase Return</div>
-                <p className="text-lg font-normal text-[#FF4D00]"> 30000.000 <span className="text-sm font-medium">AED</span></p>
+                <p className="text-lg font-normal text-[#FF4D00]">
+                  {" "}
+                  30000.000{" "}
+                  <span className="text-sm font-medium text-black">AED</span>
+                </p>
               </div>
             </div>
           </div>
         </div>
         <div>
-          <Doughnut />
+          <DoughnutChart />
         </div>
       </div>
-      <div className="grid grid-rows-2 gap-5 max-w-[100%]">
-        <div className="shadow-special p-5  grid rounded-lg">
-          {/* <AreaChart /> */}
+      <div className="grid gap-5 grid-rows-2 max-w-[100%] h-fit">
+        <div className="shadow-special p-5 rounded-lg">
+          <AreaChart />
         </div>
-        <div className="grid grid-rows-3 grid-flow-col gap-5">
-          <div className="shadow-special rounded-lg">son1</div>
-          <div className="shadow-special rounded-lg">son2</div>
-          <div className="shadow-special rounded-lg">son3</div>
-          <div className="shadow-special rounded-lg">son4</div>
-
+        <div className="grid grid-col-2  gap-5 font-medium">
+          <Footer />
         </div>
       </div>
     </div>
