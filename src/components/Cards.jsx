@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { FaCaretDown } from "react-icons/fa";
 
-const Cards = ({ title, amount, percentage }) => {
+const Cards = ({ title, amount, percentage,i }) => {
+  const colors = useMemo(()=>["#00FFC6","#E596E1","#FF9372","#F76271"],[])
   return (
-    <div className="shadow shadow-special rounded-xl p-3 max-w-[100%]  ">
+    <div className="shadow-special dark:shadow-dark dark:text-white rounded-xl p-3 max-w-[100%]  ">
       <p className="text-sm font-semibold text-start py-3">{title}</p>
-      <p className="text-3xl text-[#9410A5] font-[340] py-3">
-        {amount}.000
-        <span className=" text-base font-medium text-black">AED</span>
-      </p>
+      <div className=" grid grid-flow-col justify-stretch ">
+        <p className={`text-3xl font-medium py-3 text-[#00FFC6]`}>
+          {amount}.000
+          <span className=" text-base font-medium text-black dark:text-white">AED</span>
+        </p>
+      </div>
       {percentage && (
         <div className="flex justify-end gap-1 text-[#F00]">
           <span>

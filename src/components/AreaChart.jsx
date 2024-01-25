@@ -1,91 +1,145 @@
-// import React, { useEffect, useRef } from 'react';
-// import { Chart } from 'chart.js';
+import React, { useEffect, useRef, useState } from "react";
+import * as echarts from "echarts";
+import { BarChart } from "echarts/charts";
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+} from "echarts/components";
 
+import { LabelLayout, UniversalTransition } from "echarts/features";
 
-// const AreaChart = () => {
-//   const chartRef = useRef(null);
-//   const data = [
-//     { year: 2010, count: 30 },
-//     { year: 2011, count: 23 },
-//     { year: 2012, count: 25 },
-//     { year: 2013, count: 25 },
-//     { year: 2014, count: 12 },
-//     { year: 2015, count: 30 },
-//     { year: 2016, count: 28 },
-//   ];
-//   useEffect(() => {
-//     if (chartRef.current) {
-//       // const myChart = new Chart(chartRef.current, {
-//       //   type: 'line', // Specify chart type as 'line' for area charts
-//       //   data: {
-//       //     labels: [/* your labels here */], // Add your labels
-//       //     datasets: [
-//       //       {
-//       //         label: 'Dataset 1', // Add labels for each dataset
-//       //         data: [2,4,2,5,7,4,7,8,4],
-//       //         backgroundColor: 'rgba(255, 99, 132, 0.2)', // Add background color
-//       //         borderColor: 'rgb(255, 99, 132)', // Add border color
-//       //         fill: 'origin',
-//       //       },
-//       //       // ... other datasets with their labels, data, colors, and fill options
-//       //     ],
-//       //   },
-//       //   options: {
-//       //     plugins: {
-//       //       legend: {
-//       //         display: false, // Hide legend if not needed
-//       //       },
-//       //     },
-//       //     // Add any other chart options as needed
-//       //   },
-//       // });
-//       const ctx = chartRef.current.getContext('2d');
-//       const gradient = ctx.createLinearGradient(0, 0, 0, 400); // Adjust starting and ending points as needed
-//       gradient.addColorStop(0, 'rgba(50, 205, 50, 0.8)'); // Lighter green
-//       gradient.addColorStop(1, 'rgba(34, 139, 34, 0.2)'); // Darker green
-//       const myChart = new Chart(chartRef.current, {
-        
-//         type: 'line',
-//         data: {
-//           labels: data.map(row => row.year),
-//           datasets: [
-//             {
-//               showLine:false,
-//               pointRadius:false,
-//               label: 'Acquisitions by year',
-//               data: data.map(row => row.count),
-//               animation:false,
-//               fill:true,
-//               backgroundColor: gradient,
-//               borderColor: "rgba(255, 99, 132, 1)", // Set line color
-//               borderWidth: 1
-//             }
-//           ]
-//         }
-//       })
+import { CanvasRenderer } from "echarts/renderers";
 
-//       return () => myChart.destroy(); // Cleanup on unmount
-//     }
-//   }, [chartRef]);
-
-//   return (
-//     <div>
-//       <canvas ref={chartRef} ></canvas>
-//     </div>
-//   );
-// };
-
-// export default AreaChart;
-
-
-import React from 'react'
+echarts.use([
+  BarChart,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer,
+]);
 
 const AreaChart = () => {
+  const chartRef = useRef(null);
+  const [data,setData] = useState([2000,4000,6000,8000,1000,1200,1400])
+  const [labelData,setLabelData] = useState(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+
+  useEffect(() => {
+    if (chartRef.current) {
+      const myChart = echarts.init(chartRef.current);
+      echarts.use([
+        BarChart,
+        TitleComponent,
+        TooltipComponent,
+        GridComponent,
+        DatasetComponent,
+        TransformComponent,
+        LabelLayout,
+        UniversalTransition,
+        CanvasRenderer,
+      ]);
+
+      myChart.setOption({
+        grid: {
+          containLabel: false,
+        },
+        title: {
+          text: 'Hourly Sales', // Replace with your desired heading
+          padding:20,
+          left: 'center', // Position (optional, defaults to 'left')
+          top: 'top', // Position (optional, defaults to 'top')
+          textStyle: {
+            fontSize: 20, // Adjust font size as needed
+          },
+        },
+        xAxis: {
+          type: 'category',
+          data: labelData,
+          boundaryGap:false,
+          grid: {
+            show: false, // Hide grid lines, but keep axis line
+          },
+          axisLine: {
+            show: false, // Show the x-axis line
+          },
+          axisLabel: {
+            padding: [4, 0, 4, 15] // 4 pixels padding on top and bottom, 0 on left, 15 on right
+          },
+          axisTick: {
+            show: false
+          },
+        },
+        yAxis: {
+          splitLine: {
+            show: false, // Hide y-axis grid lines
+          },
+          series: [
+            {
+              data: data,
+            }
+          ],
+          axisLabel: {
+            padding: [4, 0, 4, 15] // 4 pixels padding on top and bottom, 0 on left, 15 on right
+          },
+          type: 'value'
+        },
+        series: [
+          {
+            data: data,
+            type: 'line',
+            areaStyle: {},
+            showSymbol: false,
+            markLine: {
+              data: [[{ x: 1 }, { x: 1, silent: true }], // Vertical break at x-axis value 1
+                      [{ x: 4 }, { x: 4, silent: true }], // Break at x-axis value 4
+                      // ... define additional break points
+                     ],
+              symbol: 'none', // Hide the marker symbol
+            },
+            lineStyle: {
+              color: 'rgba(0, 255, 56, .5)', // Adjust color as desired
+              width: 2,
+            },
+            areaStyle: {
+              color: {
+                type: 'linear',
+                x: 0.5, // Fixed position
+                y: 0, // Top of the area
+                x2: 0.5, // Fixed position
+                y2: 1, // Bottom of the area
+                colorStops: [
+                  {
+                    offset: 0,
+                    color: 'rgba(0, 255, 56, 2)' // Green at top
+                  },
+                  {
+                    offset: 1,
+                    color: 'rgba(0, 255, 56, 0)' // Fades to gray at bottom
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      });
+    }
+  }, [data]);
   return (
     <div>
-      sinan
+      <div
+        id="main"
+        className="bg-green- p-1 rounded-lg"
+        style={{ height: "350px" }}
+        ref={chartRef}
+      ></div>
     </div>
-  )
-}
+  );
+};
 
-export default AreaChart
+export default AreaChart;

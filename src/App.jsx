@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {BrowserRouter, Route,Routes } from 'react-router-dom'
 import './App.css'
 import DashBoardPage from './pages/admin/DashBoardPage'
+import CounterPage from "./pages/admin/CouterPage"
 
 const App = () => {
   return (
     <BrowserRouter>
-      <main className='max-w-full p-6'>
+      <main className={`max-w-[100%] p-6`}>
         <Routes>
-          <Route path='/admin' element={< DashBoardPage />}></Route>
+          <Route path='/' element={< DashBoardPage />}></Route>
+          <Route path='/Counter' element={<CounterPage/>}></Route>
         </Routes>
       </main>
     </BrowserRouter>

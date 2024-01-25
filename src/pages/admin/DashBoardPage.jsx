@@ -3,9 +3,10 @@ import Navbar from '../../components/Navbar'
 import DashBoard from '../../components/DashBoard'
 
 const DashBoardPage = () => {
+
   return (
-    <div>
-      <Navbar/>
+    <div className=''>
+      <Navbar />
       <DashBoard/>
     </div>
   )

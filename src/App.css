@@ -5,8 +5,14 @@
 
 :root{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* background-color: black; */
 }
-
+* {
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden; /* or auto, depending on your design */
+}
 #root {
   margin: 0 auto;
   /* padding: 2rem;
@@ -20,6 +26,10 @@
 }
 .shadow-special{
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.165);
+}
+
+.shadow-darkTheme {
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.7)!important;
 }
 /* 
 .logo {
