@@ -5,8 +5,11 @@
 
 :root{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* background-color: black; */
+  --background-color: black;
 }
+/* :root{
+  background-color: black;
+} */
 * {
   box-sizing: border-box;
 }
@@ -28,8 +31,8 @@ body {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.165);
 }
 
-.shadow-darkTheme {
-  box-shadow: 0 0 30px rgba(255, 0, 0, 0.7)!important;
+.shadow-special2 {
+  box-shadow: 0 0 30px rgba(245, 245, 245, 0.227);
 }
 /* 
 .logo {

@@ -16,6 +16,9 @@ export default {
         'dark-bg': '#141414', 
         'dark-text': '#FFFF00',  
       },
+      boxShadow: {
+        special2: '0 0 30px rgba(245, 245, 245, 0.227)',
+      },
     },
   },
   

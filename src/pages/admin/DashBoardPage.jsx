@@ -6,7 +6,7 @@ const DashBoardPage = () => {
 
   return (
     <div className=''>
-      <Navbar />
+      <Navbar page="Home"/>
       <DashBoard/>
     </div>
   )

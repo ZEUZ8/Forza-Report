@@ -4,10 +4,10 @@ import Counter from '../../components/Counter'
 
 const CouterPage = () => {
   return (
-    <>
-      <Navbar/>
+    <div className='max-w-[100vw] max-h-[95vh] flex flex-col'>
+      <Navbar page="Couter Report"/>
       <Counter/>
-    </>
+    </div>
   )
 }
 

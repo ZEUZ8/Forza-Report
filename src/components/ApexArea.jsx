@@ -1,12 +1,82 @@
 
+
 import ReactApexChart from "react-apexcharts";
 import { salesChartData1 } from "../assets/sales";
+import salesData from "../../generateData";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AppContext } from "../context/AppProvider";
 
 const ApexArea = () => {
+  const {theme} = useContext(AppContext)
+
+  useEffect(()=>{
+    console.log(theme,' thethe hve change')
+  },[theme])
+  
+  const tickRef = useRef(null);
+  const [tickCount, setTickCount] = useState(0);
+  const [tickAmount, setTickAmount] = useState(5);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setTickCount(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (tickRef.current) {
+      setTickAmount(Math.floor(tickRef.current.offsetWidth / 100));
+    }
+  }, [tickCount]);
+
   const series = [
     {
       name: "time",
-      data: salesChartData1,
+      data: [
+        [new Date("2024-01-23T00:01:15").getTime(), 1800.95],
+        [new Date("2024-01-23T00:06:45").getTime(), 1850.34],
+        [new Date("2024-01-23T00:12:00").getTime(), 1900.18],
+        [new Date("2024-01-23T00:18:00").getTime(), 2000.18],
+        [new Date("2024-01-23T01:02:00").getTime(), 1900.18],
+        [new Date("2024-01-23T01:12:00").getTime(), 1800.18],
+        [new Date("2024-01-23T01:18:00").getTime(), 2000.18],
+        [new Date("2024-01-23T02:04:00").getTime(), 1800.18],
+        [new Date("2024-01-23T02:12:00").getTime(), 1900.18],
+        [new Date("2024-01-23T02:18:00").getTime(), 2200.18],
+        [new Date("2024-01-23T03:12:00").getTime(), 2400.18],
+        [new Date("2024-01-23T03:18:00").getTime(), 2500.18],
+        [new Date("2024-01-23T03:40:00").getTime(), 2300.18],
+        [new Date("2024-01-23T04:02:00").getTime(), 2100.18],
+        [new Date("2024-01-23T04:10:00").getTime(), 2300.18],
+        [new Date("2024-01-23T04:12:00").getTime(), 2500.18],
+        [new Date("2024-01-23T05:12:00").getTime(), 2600.18],
+        [new Date("2024-01-23T06:18:00").getTime(), 2500.18],
+        [new Date("2024-01-23T07:12:00").getTime(), 2300.18],
+        [new Date("2024-01-23T08:12:00").getTime(), 2000.18],
+        [new Date("2024-01-23T09:20:00").getTime(), 1800.18],
+        [new Date("2024-01-23T10:12:00").getTime(), 1700.18],
+        [new Date("2024-01-23T11:12:00").getTime(), 2000.18],
+        [new Date("2024-01-23T12:12:00").getTime(), 2200.18],
+        [new Date("2024-01-23T13:12:00").getTime(), 2500.18],
+        [new Date("2024-01-23T14:12:00").getTime(), 2400.18],
+        [new Date("2024-01-23T15:12:00").getTime(), 2600.18],
+        [new Date("2024-01-23T16:12:00").getTime(), 2500.18],
+        [new Date("2024-01-23T17:12:00").getTime(), 2300.18],
+        [new Date("2024-01-23T18:12:00").getTime(), 2500.18],
+        [new Date("2024-01-23T19:12:00").getTime(), 2700.18],
+        [new Date("2024-01-23T20:12:00").getTime(), 2600.18],
+        [new Date("2024-01-23T21:12:00").getTime(), 2300.18],
+        [new Date("2024-01-23T22:12:00").getTime(), 2100.18],
+        [new Date("2024-01-23T23:12:00").getTime(), 1900.18],
+        [new Date("2024-01-23T23:16:00").getTime(), 2000.6],
+      ],
+      color: "#00ff00",
     },
   ];
   const options = {
@@ -14,13 +84,25 @@ const ApexArea = () => {
       id: "area-datetime",
       type: "area",
       height: 300,
-      zoom: {
-        autoScaleYaxis: true,
-      },
       toolbar: {
         show: false,
       },
     },
+    zoom: {
+      enabled: true,
+      type: "x",
+      resetIcon: {
+        offsetX: -10,
+        offsetY: 0,
+        fillColor: "#fff",
+        strokeColor: "#37474F",
+      },
+      selection: {
+        background: "#90CAF9",
+        border: "#0D47A1",
+      },
+    },
+    scrollBar: { enabled: true },
     dataLabels: {
       enabled: false,
     },
@@ -30,7 +112,7 @@ const ApexArea = () => {
       style: {
         fontSize: "22px",
         fontWeight: "Bold",
-        color: "#263238",
+        color: theme === "light" ?  "#263238" :"white",
       },
     },
     toolbar: {
@@ -42,29 +124,26 @@ const ApexArea = () => {
       max: 3000,
       tickAmount: 3,
       labels: {
+        formatter: function (val) {
+          return val.toFixed(2).replace(/\.00$/, "");
+        },
         style: {
           fontSize: "14px",
           fontWeight: 500,
+          colors: theme === "light" ? "#263238" : "white"
         },
       },
-      // title: {
-      //   text: "Price",
-      //   offsetX: 30,
-      //   offsetY: -190,
-      //   rotate: 0,
-      //   style: {
-      //     fontSize: "16px",
-      //     fontFamily: "Helvetica, Arial, sans-serif",
-      //     fontWeight: 600,
-      //     cssClass: "apexcharts-yaxis-title",
-      //   },
-      // },
+
     },
+
     xaxis: {
       type: "datetime",
-      tickAmount: 8,
+      tickAmount: tickAmount,
+      scrollbar: {
+        enabled: true,
+      },
       labels: {
-        formatter:(value) => {
+        formatter: (value) => {
           // Convert x-axis values (milliseconds) to hours and format label
           const date = new Date(value);
           const hours = date.getHours();
@@ -73,27 +152,17 @@ const ApexArea = () => {
         style: {
           fontSize: "12px",
           fontWeight: 500,
+          colors: theme === "light" ? "#263238" : "white"
         },
       },
-      // title: {
-      //   text: "hours",
-      //   offsetX: 600,
-      //   offsetY: -21,
-      //   style: {
-      //     fontSize: "16px",
-      //     fontFamily: "Helvetica, Arial, sans-serif",
-      //     fontWeight: 600,
-      //     cssClass: "apexcharts-yaxis-title",
-      //   },
-      // },
       axisTicks: {
         enable: false,
       },
-      axisBorder:{
-        show:false
+      axisBorder: {
+        show: false,
       },
-      axisTicks:{
-        show:false
+      axisTicks: {
+        show: false,
       },
       offsetX: 5,
     },
@@ -107,7 +176,7 @@ const ApexArea = () => {
       },
     },
     tooltip: {
-      enabled: false,
+      enabled: true,
     },
     fill: {
       type: "gradient",
@@ -132,7 +201,7 @@ const ApexArea = () => {
     },
     selection: "one_year",
     stroke: {
-      width: 0,
+      width: 2,
       curve: "smooth",
       lineCap: "round",
       fill: {
@@ -144,9 +213,11 @@ const ApexArea = () => {
       },
     },
   };
+
+
   return (
-    <div id="chart-timeline bg-green-500">
-     <ReactApexChart
+    <div ref={tickRef} id="chart-timeline  bg-green-500">
+      <ReactApexChart
         options={options}
         series={series}
         type="area"
@@ -157,4 +228,4 @@ const ApexArea = () => {
   );
 };
 
-export default ApexArea
+export default ApexArea;

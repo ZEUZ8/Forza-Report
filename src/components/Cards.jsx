@@ -4,12 +4,12 @@ import { FaCaretDown } from "react-icons/fa";
 const Cards = ({ title, amount, percentage,i }) => {
   const colors = useMemo(()=>["#00FFC6","#E596E1","#FF9372","#F76271"],[])
   return (
-    <div className="shadow-special dark:shadow-dark dark:text-white rounded-xl p-3 max-w-[100%]  ">
+    <div className="dark shadow-special dark:shadow-special2 dark:shadow- rounded-xl p-3 max-w-[100%]  ">
       <p className="text-sm font-semibold text-start py-3">{title}</p>
       <div className=" grid grid-flow-col justify-stretch ">
         <p className={`text-3xl font-medium py-3 text-[#00FFC6]`}>
           {amount}.000
-          <span className=" text-base font-medium text-black dark:text-white">AED</span>
+          <span className="text-base font-medium text-black dark:text-white">AED</span>
         </p>
       </div>
       {percentage && (

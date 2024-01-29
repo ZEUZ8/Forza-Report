@@ -1,11 +1,19 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { AppContext } from "../context/AppProvider";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = () => {
+
+  const {theme} = useContext(AppContext) 
   const [amount, setAmount] = useState(900);
+  const [color, setColor] = useState(theme); // Initialize color state
+
+  useEffect(() => {
+    setColor(theme); // Update color when theme changes
+  }, [theme]);
 
   useEffect(() => {
     console.log("state Mounted");
@@ -27,7 +35,7 @@ const DoughnutChart = () => {
         data: [2, 9, 3, 5],
         backgroundColor: colors,
         borderWidth: 7,
-        borderColor: "white",
+        borderColor: theme === "light" ? "white" : "black" ,
         borderRadius: 12,
         cutout: 70,
       },
@@ -58,7 +66,8 @@ const DoughnutChart = () => {
         ctx.restore();
         var fontSize1 = (height / 220).toFixed(2);
         ctx.font = fontSize1 + "em sans-serif";
-        ctx.fillStyle = "black"; // Set color for the first line
+        var textColor = color === "light" ? "black" : "white";
+        ctx.fillStyle =  textColor
         ctx.textBaseline = "center";
         var text1 = "Cash",
           textX1 = Math.round((width - ctx.measureText(text1).width) / 2),
@@ -68,7 +77,7 @@ const DoughnutChart = () => {
         // Second Line
         var fontSize2 = (height / 220).toFixed(2);
         ctx.font = fontSize2 + "em sans-serif";
-        ctx.fillStyle = "black"; // Set color for the second line
+        ctx.fillStyle = ""; // Set color for the second line
         var text2 = `${amount}\nAED`,
           textX2 = Math.round((width - ctx.measureText(text2).width) / 2),
           textY2 = height / 2 + 10; // Adjust Y position for the second line
@@ -80,21 +89,21 @@ const DoughnutChart = () => {
   ];
 
   return (
-    <div className=" shadow-special rounded-xl p-5 grid sm:grid-cols-2 ">
+    <div className=" shadow-special dark:shadow-special2 rounded-xl p-5 grid sm:grid-cols-2 lg:h-[100%] ">
       <div className="grid grid-rows-2 ">
         <div className="grid grid-rows-2  px-2">
           <div className="flex items-center ">
-            <p className="text-lg font-medium ">Collection distribution</p>
+            <p className="text-lg font-medium dark:text-white">Collection distribution</p>
           </div>
 
-          <div className="">
+          <div className="dark:text-white">
             <p className="text-sm">Total amount</p>
             <h1 className="text-2xl font-medium">
               365.61 <span className="font-light">AED</span>
             </h1>
           </div>
         </div>
-        <div className=" grid grid-cols-2 grid-flow-row px-2 h-[60%] ">
+        <div className=" grid grid-cols-2 grid-flow-row px-2 h-[60%] dark:text-white ">
           {Labels.map((label,i) => {
             return (
               <div class="flex items-center gap-4">
