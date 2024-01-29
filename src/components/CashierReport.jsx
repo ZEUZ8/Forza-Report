@@ -80,7 +80,7 @@ const CashierReport = () => {
   const [counters, setCounters] = useState([1, 2]);
   return (
     <>
-      <div className=" text-black dark:text-white ">
+      <div className="flex text-black dark:text-white ">
         <div className="w-[20%]">
           <div className="w-full  flex flex-col gap-2 ">
             <div className="grid w-full">
@@ -119,7 +119,7 @@ const CashierReport = () => {
         </div>
 
         <div className=" p-2 w-full flex justify-center ">
-          <div className=" w-[30rem] grid grid-cols-10 pt-5 bg-yellow-200">
+          <div className=" w-[30rem] grid grid-cols-10 pt-5 ">
             <div className="col-span-5">
               <p className="pb-5 text-sm font-medium">Counter Worked on</p>
               <h1 className="text-2xl font-medium pb-2">C1</h1>
