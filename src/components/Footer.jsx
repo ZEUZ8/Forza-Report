@@ -9,7 +9,7 @@ const Footer = () => {
   }
   return (
     <>
-      <div className="grid max-sm:grid-cols-1 grid-cols-2  lg:grid-cols-4 gap-5 mt-5 " >
+      <div className="grid max-sm:grid-cols-1 grid-cols-2  lg:grid-cols-4 gap-5 mt-5 cursor-pointer" >
         
         <div className="shadow-special dark:shadow-special2 rounded-xl p-4 grid grid-cols-5 items-center text-center" onClick={()=>handleNavigation("departmentreport")}>
           <div className="col-span-4  max-md:col-span-3 max-md:col-start-2  mx-auto">

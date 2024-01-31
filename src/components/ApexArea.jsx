@@ -1,5 +1,3 @@
-
-
 import ReactApexChart from "react-apexcharts";
 import { salesChartData1 } from "../assets/sales";
 import salesData from "../../generateData";
@@ -7,16 +5,15 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../context/AppProvider";
 
 const ApexArea = () => {
-  const {theme} = useContext(AppContext)
+  const { theme } = useContext(AppContext);
 
-  useEffect(()=>{
-    console.log(theme,' thethe hve change')
-  },[theme])
-  
+  // useEffect(() => {
+  //   console.log(theme, " thethe hve change");
+  // }, [theme]);
+
   const tickRef = useRef(null);
   const [tickCount, setTickCount] = useState(0);
   const [tickAmount, setTickAmount] = useState(5);
-
   useEffect(() => {
     const handleResize = () => {
       setTickCount(window.innerWidth);
@@ -84,25 +81,40 @@ const ApexArea = () => {
       id: "area-datetime",
       type: "area",
       height: 300,
-      toolbar: {
-        show: false,
+      zoom: {
+        autoScaleYaxis: true,
       },
     },
-    zoom: {
-      enabled: true,
-      type: "x",
-      resetIcon: {
-        offsetX: -10,
-        offsetY: 0,
-        fillColor: "#fff",
-        strokeColor: "#37474F",
-      },
-      selection: {
-        background: "#90CAF9",
-        border: "#0D47A1",
-      },
-    },
-    scrollBar: { enabled: true },
+
+    // annotation were hided change if it needed at any time 
+
+    // annotations: {
+    //   yaxis: [
+    //     {
+    //       y: 0,
+    //       borderColor: "white",
+    //       label: {
+    //         show: true,
+    //         text: "Average",
+    //         style: {
+    //           color: "#fff",
+    //           background: "#00E396",
+    //         },
+    //       },
+    //     },
+    //   ],
+    //   xaxis: [
+    //     {
+    //       x: new Date("2024-01-23T00:00:00").getTime(),
+    //       type: "datetime",
+    //       borderColor: "#ffffff",
+    //       yAxisIndex: 0,
+    //       labels: {},
+    //     },
+    //   ],
+    // },
+
+
     dataLabels: {
       enabled: false,
     },
@@ -112,14 +124,23 @@ const ApexArea = () => {
       style: {
         fontSize: "22px",
         fontWeight: "Bold",
-        color: theme === "light" ?  "#263238" :"white",
+        color: theme === "light" ? "#263238" : "white",
       },
     },
     toolbar: {
       show: false,
     },
+    markers: {
+      size: 0,
+      style: "hollow",
+    },
+
+
     yaxis: {
-      show: true,
+      // title: {
+      //   text: "Price",
+      // },
+
       min: 0,
       max: 3000,
       tickAmount: 3,
@@ -128,33 +149,32 @@ const ApexArea = () => {
           return val.toFixed(2).replace(/\.00$/, "");
         },
         style: {
-          fontSize: "14px",
+          fontSize: tickAmount < 5 ? "9px" :"14px",
           fontWeight: 500,
-          colors: theme === "light" ? "#263238" : "white"
+          colors: theme === "light" ? "#263238" : "white",
         },
       },
-
     },
 
     xaxis: {
       type: "datetime",
+      x: new Date("2024-01-23T00:00:00").getTime(),
       tickAmount: tickAmount,
-      scrollbar: {
-        enabled: true,
-      },
       labels: {
-        formatter: (value) => {
-          // Convert x-axis values (milliseconds) to hours and format label
-          const date = new Date(value);
-          const hours = date.getHours();
-          return hours % 12 === 0 ? "12am" : `${hours % 12}am`;
-        },
+        format:"htt",
+        // formatter: (value) => {
+        //   // Convert x-axis values (milliseconds) to hours and format label
+        //   const date = new Date(value);
+        //   const hours = date.getHours();
+        //   return hours % 12 === 0 ? "12am" : `${hours % 12}am`;
+        // },
         style: {
           fontSize: "12px",
           fontWeight: 500,
-          colors: theme === "light" ? "#263238" : "white"
+          colors: theme === "light" ? "#263238" : "white",
         },
       },
+      // min: new Date() - 3 * 60 * 60 * 1000,
       axisTicks: {
         enable: false,
       },
@@ -166,6 +186,8 @@ const ApexArea = () => {
       },
       offsetX: 5,
     },
+
+    
     grid: {
       show: false,
       padding: {
@@ -176,6 +198,9 @@ const ApexArea = () => {
       },
     },
     tooltip: {
+      stroke: {
+        show: false, // Set to false to hide the vertical line when hovering
+      },
       enabled: true,
     },
     fill: {
@@ -213,7 +238,6 @@ const ApexArea = () => {
       },
     },
   };
-
 
   return (
     <div ref={tickRef} id="chart-timeline  bg-green-500">

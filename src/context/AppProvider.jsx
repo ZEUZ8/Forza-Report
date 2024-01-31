@@ -27,7 +27,6 @@ const AppProvider = ({ children }) => {
     theme,
     toggleTheme,
   };
-  console.log("context Value : ", value);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

@@ -12,7 +12,7 @@ const Navbar = ({page}) => {
 
 
   return (
-    <div className="flex justify-between pb-6 hover:cursor-pointer  ">
+    <div className="flex justify-between pb-6 hover:cursor-pointer items-start ">
       <div className="">
         {page === "Home" ? (
           <div className="text-lg text-black dark:text-white">Home</div>
@@ -23,7 +23,7 @@ const Navbar = ({page}) => {
           </div>
         )}
       </div>
-      <div className="flex gap-5 items-center">
+      <div className="flex gap-5 items-center ">
         <p className="text-sm text-[#FF1A1A]">Log Out</p>
         <p className="text-lg" onClick={toggleTheme}>
           {theme !== "light"  ? (

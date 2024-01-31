@@ -5,16 +5,16 @@
 
 :root{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  --background-color: black;
+  --background-color-light: white;
+  --background-color-dark: black;;
 }
-/* :root{
-  background-color: black;
-} */
+
 * {
   box-sizing: border-box;
 }
 body {
   overflow-x: hidden; /* or auto, depending on your design */
+  background-color: var(--background-color-light);
 }
 #root {
   margin: 0 auto;

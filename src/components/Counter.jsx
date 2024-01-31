@@ -4,7 +4,7 @@ import CounterCard from "./CounterCard";
 
 const Counter = () => {
   const [counters, setCounters] = useState([1, 2, 3, 4, 5, 6]);
-  const [counter, setCounter] = useState(null);
+  const [counter, setCounter] = useState([]);
 
   return (
     <>
@@ -14,10 +14,10 @@ const Counter = () => {
           {counters.map((count) => {
             return (
               <div
+                onClick={() => setCounter((prev)=> [...prev, count])}
                 key={count}
-                onClick={(count)=>setCounter(count)}
-                className={`${counter === count ? `border-blue-500` : `border-gray-200`} bg-gray-200 dark:bg-gray-600 dark:border-black border outline-none w-[80px] max-w-[90px] max-h-[70px] p-4 text-2xl text-center text-slate-700 
-                rounded-2xl shadow-inner bg-opacity-80 dark:text-white dark:hover:border-white focus:outline-none active:border-blue-400  focus:ring focus:ring-blue-200 hover:scale-95  `}
+                className={`${counter.includes(count) ? `dark:border-white border-blue-300 border scale-90` : `border-gray-200`} bg-gray-200 dark:bg-gray-600 dark:border-black border outline-none w-[80px] max-w-[90px] max-h-[70px] p-4 text-2xl text-center text-slate-700 
+                rounded-2xl shadow-inner bg-opacity-80 dark:text-white dark:hover:border-white focus:outline-none active:border-blue-400  focus:ring focus:ring-blue-200 hover:scale-90  `}
               >
                 <h1>C{count}</h1>
               </div>

@@ -9,15 +9,15 @@ const DoughnutChart = () => {
 
   const {theme} = useContext(AppContext) 
   const [amount, setAmount] = useState(900);
-  const [color, setColor] = useState(theme); // Initialize color state
+  const [color, setColor] = useState(theme);
 
   useEffect(() => {
-    setColor(theme); // Update color when theme changes
+    const white = "white"
+    const dark = "black"
+    const newColor = theme === "light" ? dark : white;
+    setColor(newColor);
   }, [theme]);
 
-  useEffect(() => {
-    console.log("state Mounted");
-  }, []);
   const Labels = useMemo(
     () => ["GooglePay", "CreditCard", "Credit", "Cash"],
     []
@@ -26,6 +26,8 @@ const DoughnutChart = () => {
     () => ["#23ccd1", "#a7236f", "#f56c40", "#f7dc67"],
     []
   );
+
+
 
   const data = {
     //   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -66,8 +68,7 @@ const DoughnutChart = () => {
         ctx.restore();
         var fontSize1 = (height / 220).toFixed(2);
         ctx.font = fontSize1 + "em sans-serif";
-        var textColor = color === "light" ? "black" : "white";
-        ctx.fillStyle =  textColor
+        ctx.fillStyle = color; 
         ctx.textBaseline = "center";
         var text1 = "Cash",
           textX1 = Math.round((width - ctx.measureText(text1).width) / 2),
@@ -108,7 +109,8 @@ const DoughnutChart = () => {
             return (
               <div class="flex items-center gap-4">
                 <div
-                  className={` chumma w-4 h-4 border rounded bg-[${colors[i]}] `}
+                style={{ backgroundColor: colors[i] }}
+                  className={` chumma w-4 h-4 border rounded`}
                 ></div>
                 <p>{label}</p>
               </div>
@@ -117,7 +119,8 @@ const DoughnutChart = () => {
         </div>
       </div>
       <div
-        className={`w-[100%] h-[260px]  grid justify-items-center bg-[${colors[2]}]`}
+      
+        className={`w-[100%] h-[260px]  grid justify-items-center`}
       >
         <Doughnut data={data} options={options} plugins={plugins} />
       </div>

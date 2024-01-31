@@ -4,8 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { AppContext } from "../context/AppProvider";
 
 const CashierReport = () => {
-  const {theme} = useContext(AppContext)
-
+  const { theme } = useContext(AppContext);
 
   const [amount, setAmount] = useState(900);
   const Labels = useMemo(
@@ -80,46 +79,56 @@ const CashierReport = () => {
   const [counters, setCounters] = useState([1, 2]);
   return (
     <>
-      <div className="flex text-black dark:text-white ">
-        <div className="w-[20%]">
-          <div className="w-full  flex flex-col gap-2 ">
-            <div className="grid w-full">
+      <div className="xl:flex text-black dark:text-white ">
+        
+        <div className="w-[100%] xl:w-[20%]">
+
+          <div className="  flex flex-col gap-2 ">
+            <div className="">
               <p className="text-sm font-medium py-2">Cashier Names</p>
             </div>
 
-            <div className=" flex flex-col  font-light text-lg gap-3 tracking-wider text-gray-400 cursor-pointer p-1">
-              <p
-                className={`text-[1.3rem] justify-between  font-[500] text-black dark:text-white flex items-center`}
-              >
-                Mohamed Sinan{" "}
-                <span className="">
+            <div className="w-[100%] flex flex-row flex-nowrap xl:flex-col  font-light text-lg gap-3 tracking-wider text-gray-400 cursor-pointer p-1 max-xl:pb-4 overflow-auto scrollbar-hide">
+
+              <div className="flex gap-3 xl:gap-5 items-center">
+                <p
+                  className={`text-[1.3rem] justify-between  font-[500] text-black dark:text-white flex items-center`}
+                >
+                  Mohamed Sinan{" "}
+                </p>
+                <span className="pt-1">
                   <IoIosArrowForward />
                 </span>{" "}
-              </p>
-              <p className="flex text-[1.3rem] justify-between font-[250] items-center">
-                Mohamed Sinan{" "}
-                <span className="">
+              </div>
+              <div className="flex gap-3 xl:gap-5 items-center">
+                <p
+                  className={`text-[1.3rem] justify-between  font-[250] dark:text-white flex items-center`}
+                >
+                  Mohamed Sinan{" "}
+                </p>
+                <span className="pt-1">
                   <IoIosArrowForward />
                 </span>{" "}
-              </p>
-              <p className="flex text-[1.3rem] justify-between font-[250] items-center">
-                Mohamed Sinan{" "}
-                <span className="">
+              </div>
+              <div className="flex gap-3 xl:gap-5 items-center">
+                <p
+                  className={`text-[1.3rem] justify-between  font-[250]  dark:text-white flex items-center`}
+                >
+                  Mohamed Sinan{" "}
+                </p>
+                <span className="pt-1">
                   <IoIosArrowForward />
                 </span>{" "}
-              </p>
-              <p className="flex text-[1.3rem] justify-between font-[250] items-center">
-                Mohamed Sinan{" "}
-                <span className="">
-                  <IoIosArrowForward />
-                </span>{" "}
-              </p>
+              </div>
+              
+        
+              
             </div>
           </div>
         </div>
 
-        <div className=" p-2 w-full flex justify-center ">
-          <div className=" w-[30rem] grid grid-cols-10 pt-5 ">
+        <div className=" p-2 w-full max-md:grid md:flex md:gap-5 justify-center ">
+          <div className=" xl:w-[30rem] w-full grid grid-cols-10 pt-5 ">
             <div className="col-span-5">
               <p className="pb-5 text-sm font-medium">Counter Worked on</p>
               <h1 className="text-2xl font-medium pb-2">C1</h1>
@@ -204,7 +213,7 @@ const CashierReport = () => {
             </div>
           </div>
 
-          <div className="w-[20rem] text-center rounded-2xl">
+          <div className="w-[20rem] max-md:pt-5  text-center rounded-2xl">
             <div className=" shadow-special dark:shadow-special2 rounded-xl p-5 grid justify-center ">
               <div className="grid grid-rows-2 gap-2">
                 <div className="grid grid-rows-2  px-2">

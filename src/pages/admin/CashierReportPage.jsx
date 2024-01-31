@@ -4,9 +4,11 @@ import CashierReport from '../../components/CashierReport'
 
 const CashierReportPage = () => {
   return (
-    <div className='grid gap-4'>
-      <Navbar page="Cashier Page"/>
+    <div className='h-[100vh]'>
+      <Navbar page="Cashier "/>
+      <div className='lg:pt-10 pt-5'>
       <CashierReport/>
+      </div>
     </div>
   )
 }
