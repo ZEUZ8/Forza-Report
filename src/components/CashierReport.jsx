@@ -136,10 +136,10 @@ const CashierReport = () => {
               <h1 className="text-2xl font-medium text-black dark:text-white">C2</h1>
             </div>
 
-            <div className="col-span-5 max-sm:col-span-10 max-sm:text-center">
+            <div className="col-span-5 max-sm:col-span-10 max-sm:text-center ">
               <div className="col-span-2 flex flex-col gap-5">
-                <div className="grid w-full">
-                  <p className="text-sm font-medium pb-2 text-black dark:text-white">Opening Balance</p>
+                <div className="grid w-full max-sm:grid-cols-2 max-sm:items-center max-sm:pt-5">
+                  <p className="text-sm font-medium sm:pb-2 text-black dark:text-white max-sm:text-start">Opening Balance</p>
                   <p className="text-2xl font-medium">
                     {" "}
                     3000.00 <span className="font-medium text-sm text-black dark:text-white">AED</span>
@@ -177,8 +177,8 @@ const CashierReport = () => {
                   </h1>
                 </div> */}
 
-                <div className="grid w-full">
-                  <p className="text-md font-medium pb-2 text-black dark:text-white">Closing Balance</p>
+                <div className="grid w-full max-sm:grid-cols-2 ">
+                  <p className="text-md font-medium pb-2 text-black dark:text-white max-sm:text-start">Closing Balance</p>
                   <p className="text-lg font-extralight text-black dark:text-white">
                     {" "}
                     Shift not Completed Yet !
@@ -203,8 +203,8 @@ const CashierReport = () => {
                   </div>
                 </div>
 
-                <div className="grid w-full">
-                  <p className="text-md font-medium pb-2 text-black dark:text-white">Closing Balance</p>
+                <div className="grid w-full max-sm:grid-cols-2">
+                  <p className="text-md font-medium pb-2 text-black dark:text-white max-sm:text-start">Closing Balance</p>
                   <p className="text-2xl font-medium ">
                     {" "}
                     3000.00 <span className="font-medium text-sm text-black dark:text-white">AED</span>
