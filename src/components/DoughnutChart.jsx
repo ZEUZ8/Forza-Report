@@ -9,14 +9,13 @@ const DoughnutChart = () => {
 
   const {theme} = useContext(AppContext) 
   const [amount, setAmount] = useState(900);
-  const [color, setColor] = useState(theme);
+  const [color,setColor] = useState('')
 
-  useEffect(() => {
-    const white = "white"
-    const dark = "black"
-    const newColor = theme === "light" ? dark : white;
-    setColor(newColor);
-  }, [theme]);
+  useEffect(()=>{
+    const newColor = theme === "dark" ? "white" : "black";
+    console.log(newColor,' the color have been changing curresponding to the update')
+    setColor(newColor)
+  },[theme])
 
   const Labels = useMemo(
     () => ["GooglePay", "CreditCard", "Credit", "Cash"],
@@ -37,7 +36,7 @@ const DoughnutChart = () => {
         data: [2, 9, 3, 5],
         backgroundColor: colors,
         borderWidth: 7,
-        borderColor: theme === "light" ? "white" : "black" ,
+        borderColor: theme === "light" ? "white" : "black",
         borderRadius: 12,
         cutout: 70,
       },
@@ -68,20 +67,20 @@ const DoughnutChart = () => {
         ctx.restore();
         var fontSize1 = (height / 220).toFixed(2);
         ctx.font = fontSize1 + "em sans-serif";
-        ctx.fillStyle = color; 
         ctx.textBaseline = "center";
         var text1 = "Cash",
-          textX1 = Math.round((width - ctx.measureText(text1).width) / 2),
-          textY1 = height / 2 - 20; // Adjust Y position for the first line
+        textX1 = Math.round((width - ctx.measureText(text1).width) / 2),
+        textY1 = height / 2 - 20; // Adjust Y position for the first line
+        ctx.fillStyle = "gray";
         ctx.fillText(text1, textX1, textY1);
 
         // Second Line
         var fontSize2 = (height / 220).toFixed(2);
         ctx.font = fontSize2 + "em sans-serif";
-        ctx.fillStyle = ""; // Set color for the second line
         var text2 = `${amount}\nAED`,
-          textX2 = Math.round((width - ctx.measureText(text2).width) / 2),
-          textY2 = height / 2 + 10; // Adjust Y position for the second line
+        textX2 = Math.round((width - ctx.measureText(text2).width) / 2),
+        textY2 = height / 2 + 10; // Adjust Y position for the second line
+        ctx.fillStyle = "gray"; // Set color for the second line
         ctx.fillText(text2, textX2, textY2);
 
         ctx.save();
@@ -110,7 +109,7 @@ const DoughnutChart = () => {
               <div class="flex items-center gap-4">
                 <div
                 style={{ backgroundColor: colors[i] }}
-                  className={` chumma w-4 h-4 border rounded`}
+                  className={` chumma w-4 h-4  rounded`}
                 ></div>
                 <p>{label}</p>
               </div>

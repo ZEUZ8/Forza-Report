@@ -49,12 +49,12 @@ const CounterCard = ({counter}) => {
 
               <div className="grid grid-cols-5">
                 <p className="col-span-1">in</p>
-                <h1 className=" col-span-4 font-medium">10:00 AM</h1>
+                <h1 className=" col-span-4 font-medium max-sm:pl-5">10:00 AM</h1>
               </div>
 
               <div className="grid grid-cols-5">
-                <p className="col-span-1">Out</p>
-                <h1 className="col-span-4 font-extralight">
+                <p className="col-span-1 ">Out</p>
+                <h1 className="col-span-4 font-extralight max-sm:pl-5">
                   Shift in progress
                 </h1>
               </div>

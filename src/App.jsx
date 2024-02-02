@@ -34,7 +34,7 @@ const App = () => {
     <BrowserRouter>
       <main style={styles.body}
         // className={`max-w-[100%]  p-6 ${theme === "dark" ? `bg-black dark` : `bg-white`} ${theme}`}
-        className={`max-w-[100%]  p-6  ${theme}`}
+        className={`max-w-[100%] scrollbar-hide p-6  ${theme}`}
       >
         <Routes>
           <Route path="/" element={<DashBoardPage />}></Route>

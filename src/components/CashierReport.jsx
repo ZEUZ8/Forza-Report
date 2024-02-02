@@ -79,20 +79,20 @@ const CashierReport = () => {
   const [counters, setCounters] = useState([1, 2]);
   return (
     <>
-      <div className="xl:flex text-black dark:text-white ">
+      <div className="xl:flex ">
         
         <div className="w-[100%] xl:w-[20%]">
 
           <div className="  flex flex-col gap-2 ">
             <div className="">
-              <p className="text-sm font-medium py-2">Cashier Names</p>
+              <p className="text-sm font-medium py-2 text-black dark:text-white">Cashier Names</p>
             </div>
 
             <div className="w-[100%] flex flex-row flex-nowrap xl:flex-col  font-light text-lg gap-3 tracking-wider text-gray-400 cursor-pointer p-1 max-xl:pb-4 overflow-auto scrollbar-hide">
 
               <div className="flex gap-3 xl:gap-5 items-center">
                 <p
-                  className={`text-[1.3rem] justify-between  font-[500] text-black dark:text-white flex items-center`}
+                  className={`text-md md:text-[1.3rem] justify-between  font-[500] text-black dark:text-white flex items-center`}
                 >
                   Mohamed Sinan{" "}
                 </p>
@@ -102,7 +102,7 @@ const CashierReport = () => {
               </div>
               <div className="flex gap-3 xl:gap-5 items-center">
                 <p
-                  className={`text-[1.3rem] justify-between  font-[250] dark:text-white flex items-center`}
+                  className={`text-[1.3rem] justify-between  font-[250] text-black dark:text-white flex items-center`}
                 >
                   Mohamed Sinan{" "}
                 </p>
@@ -112,7 +112,7 @@ const CashierReport = () => {
               </div>
               <div className="flex gap-3 xl:gap-5 items-center">
                 <p
-                  className={`text-[1.3rem] justify-between  font-[250]  dark:text-white flex items-center`}
+                  className={`text-[1.3rem] justify-between  font-[250]  text-black dark:text-white flex items-center`}
                 >
                   Mohamed Sinan{" "}
                 </p>
@@ -125,45 +125,46 @@ const CashierReport = () => {
               
             </div>
           </div>
+          
         </div>
 
         <div className=" p-2 w-full max-md:grid md:flex md:gap-5 justify-center ">
-          <div className=" xl:w-[30rem] w-full grid grid-cols-10 pt-5 ">
-            <div className="col-span-5">
-              <p className="pb-5 text-sm font-medium">Counter Worked on</p>
-              <h1 className="text-2xl font-medium pb-2">C1</h1>
-              <h1 className="text-2xl font-medium">C2</h1>
+          <div className=" xl:w-[30rem] w-full grid grid-cols-10 pt-5  ">
+            <div className="col-span-5 max-sm:col-span-10">
+              <p className="pb-5 text-sm font-medium text-black dark:text-white">Counter Worked on</p>
+              <h1 className="text-2xl font-medium pb-2 text-black dark:text-white">C1</h1>
+              <h1 className="text-2xl font-medium text-black dark:text-white">C2</h1>
             </div>
 
-            <div className="col-span-5">
+            <div className="col-span-5 max-sm:col-span-10 max-sm:text-center">
               <div className="col-span-2 flex flex-col gap-5">
                 <div className="grid w-full">
-                  <p className="text-sm font-medium pb-2">Opening Balance</p>
+                  <p className="text-sm font-medium pb-2 text-black dark:text-white">Opening Balance</p>
                   <p className="text-2xl font-medium">
                     {" "}
-                    3000.00 <span className="font-medium text-sm">AED</span>
+                    3000.00 <span className="font-medium text-sm text-black dark:text-white">AED</span>
                   </p>
                 </div>
                 {/* <div className=" tracking-wider">
                 </div> */}
 
                 <div className="grid gap-5">
-                  <p className="text-normal font-medium">Shift Timing</p>
+                  <p className="text-normal font-medium text-black dark:text-white">Shift Timing</p>
 
                   <div className="grid grid-cols-5">
                     <div className="col-span-1">
-                      <h1 className=" w-fit">C1</h1>
+                      <h1 className=" w-fit text-black dark:text-white">C1</h1>
                     </div>
 
                     <div className="col-span-4 grid gap-2">
                       <div className="grid grid-cols-5">
-                        <p className="col-span-1">in</p>
-                        <h1 className=" col-span-4 font-medium">10:00 AM</h1>
+                        <p className="col-span-1 text-black dark:text-white">in</p>
+                        <h1 className=" col-span-4 font-medium text-black dark:text-white">10:00 AM</h1>
                       </div>
 
                       <div className="grid grid-cols-5">
                         <p className="col-span-1">Out</p>
-                        <h1 className="col-span-4 font-medium">07:00 PM</h1>
+                        <h1 className="col-span-4 font-medium text-black dark:text-white">07:00 PM</h1>
                       </div>
                     </div>
                   </div>
@@ -177,8 +178,8 @@ const CashierReport = () => {
                 </div> */}
 
                 <div className="grid w-full">
-                  <p className="text-md font-medium pb-2">Closing Balance</p>
-                  <p className="text-lg font-extralight">
+                  <p className="text-md font-medium pb-2 text-black dark:text-white">Closing Balance</p>
+                  <p className="text-lg font-extralight text-black dark:text-white">
                     {" "}
                     Shift not Completed Yet !
                   </p>
@@ -186,27 +187,27 @@ const CashierReport = () => {
 
                 <div className="grid grid-cols-5">
                   <div className="col-span-1">
-                    <h1 className=" w-fit">C2</h1>
+                    <h1 className=" w-fit text-black dark:text-white">C2</h1>
                   </div>
 
                   <div className="col-span-4 grid gap-5">
                     <div className="grid grid-cols-5">
-                      <p className="col-span-1">in</p>
-                      <h1 className=" col-span-4 font-medium">10:00 AM</h1>
+                      <p className="col-span-1 text-black dark:text-white">in</p>
+                      <h1 className=" col-span-4 font-medium text-black dark:text-white">10:00 AM</h1>
                     </div>
 
                     <div className="grid grid-cols-5">
-                      <p className="col-span-1">Out</p>
-                      <h1 className="col-span-4 font-medium">07:00 PM</h1>
+                      <p className="col-span-1 text-black dark:text-white">Out</p>
+                      <h1 className="col-span-4 font-medium text-black dark:text-white">07:00 PM</h1>
                     </div>
                   </div>
                 </div>
 
                 <div className="grid w-full">
-                  <p className="text-md font-medium pb-2">Closing Balance</p>
-                  <p className="text-2xl font-medium">
+                  <p className="text-md font-medium pb-2 text-black dark:text-white">Closing Balance</p>
+                  <p className="text-2xl font-medium ">
                     {" "}
-                    3000.00 <span className="font-medium text-sm">AED</span>
+                    3000.00 <span className="font-medium text-sm text-black dark:text-white">AED</span>
                   </p>
                 </div>
               </div>
@@ -235,7 +236,8 @@ const CashierReport = () => {
                     return (
                       <div class="flex items-center gap-4">
                         <div
-                          className={` chumma w-4 h-4 border rounded bg-[${colors[i]}] `}
+                        style={{backgroundColor:colors[i]}}
+                          className={` chumma w-4 h-4 border rounded  `}
                         ></div>
                         <p>{label}</p>
                       </div>
@@ -244,7 +246,7 @@ const CashierReport = () => {
                 </div>
               </div>
               <div
-                className={`w-[100%] h-[260px]  grid justify-items-center bg-[${colors[2]}]`}
+                className={`w-[100%] h-[260px]  grid justify-items-center`}
               >
                 <Doughnut data={data} options={options} plugins={plugins} />
               </div>

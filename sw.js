@@ -1,6 +1,6 @@
 const staticCacheName = "site-static-v2";
 const dynamicCacheName = "site-dynamic-v1";
-const assests = ["/", "/index.html", "/index.js", "/App.css"];
+const assests = ["/", "/index.html", "/App.css"];
 
 // // service function installation
 self.addEventListener("install", (evnt) => {

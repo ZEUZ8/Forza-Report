@@ -1,15 +1,19 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { FaCaretDown } from "react-icons/fa";
+import { AppContext } from "../context/AppProvider";
 
-const Cards = ({ title, amount, percentage,i }) => {
+const Cards = ({ title, amount, percentage,color,i }) => {
+  const {theme} = useContext(AppContext)
   const colors = useMemo(()=>["#00FFC6","#E596E1","#FF9372","#F76271"],[])
   return (
-    <div className="dark shadow-special dark:shadow-special2 dark:shadow- rounded-xl p-3 max-w-[100%]  ">
-      <p className="text-sm font-semibold text-start py-3">{title}</p>
+    <div className="shadow-special dark:shadow-special2  rounded-xl p-3 max-w-[100%]  ">
+
+      <p className={`text-sm font-semibold text-start py-3 text-black dark:text-white`}>{title}</p>
+
       <div className=" grid grid-flow-col justify-stretch ">
-        <p className={`text-3xl font-medium py-3 text-[#00FFC6]`}>
+        <p className={`text-3xl font-medium py-3 `} style={{color:color}}>
           {amount}.000
-          <span className="text-base font-medium text-black dark:text-white">AED</span>
+          <span className={`text-base font-medium ${theme === "dark" ? "text-white" : "text-black"}`}>AED</span>
         </p>
       </div>
       {percentage && (

@@ -120,9 +120,9 @@ const ApexArea = () => {
     },
     title: {
       text: "Hourly Sales",
-      align: "center",
+      align: tickAmount < 5 ? "left" : "center",
       style: {
-        fontSize: "22px",
+        fontSize: tickAmount < 5 ? "15px":"22px",
         fontWeight: "Bold",
         color: theme === "light" ? "#263238" : "white",
       },
