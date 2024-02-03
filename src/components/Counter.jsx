@@ -48,7 +48,7 @@ const Counter = () => {
                   <div className="">
                     <CounterCard counter={counter} />
                   </div>
-                  {i !== counter.length - 1 && (
+                  { counter.length !== 1 && (
                     <hr class="h-px  bg-gray-400 dark:bg-gray-100 border-0"></hr>
                   )}
                 </>
