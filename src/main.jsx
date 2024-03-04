@@ -8,7 +8,7 @@ if(`serviceWorker` in navigator){
   .then((res)=>{
       console.log("service Worker Registered",res);
   })
-  .catch(erro => console.log(`service Worker Not Registered`))
+  .catch(erro => console.log(erro,`service Worker Not Registered`))
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(

@@ -42,7 +42,6 @@ const Counter = () => {
         <>
           <div className=" overflow-auto flex-1  scrollbar-hide cursor-pointer">
             {[...counter].reverse().map((counter, i) => {
-              console.log(i,' the globla in the state')
               return (
                 <>
                   <div className="">

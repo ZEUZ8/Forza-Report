@@ -13,7 +13,6 @@ const DoughnutChart = () => {
 
   useEffect(()=>{
     const newColor = theme === "dark" ? "white" : "black";
-    console.log(newColor,' the color have been changing curresponding to the update')
     setColor(newColor)
   },[theme])
 

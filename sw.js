@@ -6,7 +6,6 @@ const assests = ["/", "/index.html", "/App.css"];
 self.addEventListener("install", (evnt) => {
   evnt.waitUntil(
     caches.open(staticCacheName).then((cache) => {
-      console.log("caching cell assets");
       cache.addAll(assests);
     })
   );

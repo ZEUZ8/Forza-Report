@@ -43,7 +43,6 @@ const CashierReport = () => {
 
   useEffect(() => {
     demoCounters.filter((item) => {
-      console.log(item.counters, " teh counters");
       if (item.name === currentCashier) {
         setCashierCounters(item.counters);
       }
